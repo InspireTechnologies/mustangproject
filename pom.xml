@@ -14,8 +14,9 @@
         <url>https://github.com/InspireTechnologies/mustangproject</url>
         <tag>inspire</tag>
     </scm>
+    <!--
     <repositories>
-        <repository><!-- for jargs -->
+        <repository>
             <id>sonatype-oss-public</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
             <releases>
@@ -26,6 +27,7 @@
             </snapshots>
         </repository>
     </repositories>
+    -->
     <distributionManagement>
         <repository>
             <id>inspire-nexus</id>
@@ -38,9 +40,9 @@
         <github.global.server>github</github.global.server>
         <additionalparam>-Xdoclint:none</additionalparam>
         <!-- Skip error check for javadoc -->
-        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/net.sf.saxon/Saxon-HE -->
@@ -129,11 +131,9 @@
                     <!-- http://stackoverflow.com/questions/574594/how-can-i-create-an-executable-jar-with-dependencies-using-maven
                     mvn clean compile assembly:single -->
                     <!-- or whatever version you use -->
-                    <source>1.8</source><!-- JAXB generates Java 8 code -->
-                    <target>1.8</target>
-		    <excludes>
-		    	<exclude>**/toecount/**</exclude>
-		    </excludes>
+				    <excludes>
+				    	<exclude>**/toecount/**</exclude>
+				    </excludes>
                 </configuration>
             </plugin>
 
@@ -143,8 +143,6 @@
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
 				    <excludes>
 				    	<exclude>**/toecount/**</exclude>
 				    </excludes>
@@ -166,8 +164,8 @@
         <version>3.0.1</version>
         <configuration>
 
-          <excludePackageNames>org.mustangproject.ZUGFeRD.model.*</excludePackageNames>
-         
+          <excludePackageNames>org.mustangproject.ZUGFeRD.model.*,org.mustangproject.toecount.*</excludePackageNames>
+
         </configuration>
       </plugin>
             <plugin>
